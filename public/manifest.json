@@ -1,0 +1,22 @@
+{
+    "name": "KIMChill beauty studio",
+    "short_name": "KIMChill",
+    "id": "/",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/icons/icon-mini.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icons/icon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
