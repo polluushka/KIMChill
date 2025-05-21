@@ -422,7 +422,11 @@ p{
 .form-settings:focus {
     outline: none;
     box-shadow: #BC13FE 0 0 10px;
+}
 
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
 }
 
 .select-form {
