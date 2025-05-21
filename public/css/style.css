@@ -1534,10 +1534,6 @@ table tr td span {
         padding: 1.5rem 1rem;
     }
 
-    .select-form {
-        background-position: calc(100% - 0.3rem) 0.90rem;
-    }
-
     .list{
         width: 100%;
         overflow-x: auto;
