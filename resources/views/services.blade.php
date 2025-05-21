@@ -36,7 +36,9 @@
             </div>
 
             @guest()
-                <p style="text-align: center" class="mb-2">Чтобы записаться на услугу,<a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                <div class="mb-2" :class="theme === 'light' ? 'p-light':'p-night'">
+                    <p style="text-align: center">Чтобы записаться на услугу, <a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                </div>
             @endguest
 
             <div class="mb-3" :class="theme === 'light' ? 'p-light':'p-night'">

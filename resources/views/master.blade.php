@@ -233,7 +233,9 @@
                 @endauth
 
                 @guest()
-                    <p style="text-align: center" class="mb-2">Чтобы записаться к мастеру,<a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                    <div class="mb-2" :class="theme === 'light' ? 'p-light':'p-night'">
+                        <p style="text-align: center">Чтобы записаться к мастеру, <a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                    </div>
                 @endguest
             </div>
         </div>
