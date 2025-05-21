@@ -35,6 +35,10 @@
                 </div>
             </div>
 
+            @guest()
+                <p style="text-align: center" class="mb-2">Чтобы записаться на услугу,<a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+            @endguest
+
             <div class="mb-3" :class="theme === 'light' ? 'p-light':'p-night'">
                 <div class="list mb-1" v-if="services.length > 0">
                     <table class="table-list">
@@ -57,9 +61,11 @@
                                     </p>
                                     <p v-else></p>
                                 </td>
+                                @auth()
                                 <td style="width:15%">
                                     <button class="btn-empty p-btn-empty" @click="store_application_modal(service)" type="button">Записаться</button>
                                 </td>
+                                @endauth
                             </tr>
                         </template>
                         </tbody>
@@ -83,6 +89,7 @@
             </div>
         </div>
 
+        @auth()
         {{--        save-application--}}
         <div class="modal-container" id="createApplicationModal">
             <div class="modal-inside">
@@ -90,10 +97,6 @@
                     <div class="title">
                         <h1>Запись на услугу <span style="color: #BC13FE">@{{ service_obj.title }}</span></h1>
                     </div>
-
-                    @if(!\Illuminate\Support\Facades\Auth::user())
-                        <p>Авторизовавшись, вы сможете участвовать в нашей программе лояльности</p>
-                    @endif
 
                     <div :class="message_create_applications_error ? 'alert-error':''">
                         @{{ message_create_applications_error }}
@@ -217,18 +220,7 @@
                 </form>
             </div>
         </div>
-
-        {{--        alert-application-success--}}
-        <div class="modal-container" id="alertApplicationModal">
-            <div class="modal-inside">
-                <div>
-                    <p>@{{ message_create_applications }}</p>
-                    <div class="button-end">
-                        <button class="btn-full-form" type="button" @click="application_success_modal">Ок</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endauth
     </div>
 
     @include('layout.footer')
@@ -447,9 +439,6 @@
                         this.service_obj.qualifications = service.qualifications;
                     }
 
-                },
-                application_success_modal() {
-                    document.getElementById('alertApplicationModal').classList.toggle('modal-container-opacity');
                 },
 
                 hasQualification(service, qualificationId) {

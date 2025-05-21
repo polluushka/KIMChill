@@ -64,11 +64,8 @@
                     <h2>Запись к мастеру</h2>
                 </div>
 
+                @auth()
                 <form id="StoreApplicationForm" @submit.prevent="storeApplication">
-
-                    @if(!\Illuminate\Support\Facades\Auth::user())
-                        <p style="margin-bottom: 1rem">Авторизовавшись, вы сможете участвовать в нашей программе лояльности</p>
-                    @endif
 
                     <div :class="message_create_applications_error ? 'alert-error':''">
                         @{{ message_create_applications_error }}
@@ -233,18 +230,11 @@
                         <button class="btn-full-form">Записаться</button>
                     </div>
                 </form>
-            </div>
-        </div>
+                @endauth
 
-        {{--        alert-application-success--}}
-        <div class="modal-container" id="alertApplicationModal">
-            <div class="modal-inside">
-                <div>
-                    <p>@{{ message_create_applications }}</p>
-                    <div class="button-end">
-                        <button class="btn-full-form" type="button" @click="application_success_modal">Ок</button>
-                    </div>
-                </div>
+                @guest()
+                    <p style="text-align: center" class="mb-2">Чтобы записаться к мастеру,<a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                @endguest
             </div>
         </div>
     </div>
@@ -401,20 +391,6 @@
                         window.location = response.url;
                     }
 
-                    if(response.status === 201) {
-                        this.message_create_applications = await response.json();
-                        this.errors = [];
-                        this.message_create_applications_error = '';
-                        form.reset();
-                        this.month_id = 0;
-                        this.focus_btn_id = 0;
-                        this.date_times = [];
-                        this.time = 0;
-                        this.service_id = 0;
-                        this.getMaster();
-                        this.application_success_modal();
-                    }
-
                     if(response.status === 400) {
                         this.message_create_applications_error = '';
                         this.errors = await response.json();
@@ -428,9 +404,6 @@
 
                 },
 
-                application_success_modal() {
-                    document.getElementById('alertApplicationModal').classList.toggle('modal-container-opacity');
-                },
 
                 getPriceDuration() {
                     if (this.service_id != 0) {
