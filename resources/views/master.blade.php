@@ -234,7 +234,7 @@
 
                 @guest()
                     <div class="mb-2" :class="theme === 'light' ? 'p-light':'p-night'">
-                        <p style="text-align: center">Чтобы записаться к мастеру, <a href="{{route('authorization')}}">авторизуйтесь!</a></p>
+                        <p style="text-align: center">Чтобы записаться к мастеру, <a href="{{route('authorization')}}" class="link-a">авторизуйтесь!</a></p>
                     </div>
                 @endguest
             </div>
