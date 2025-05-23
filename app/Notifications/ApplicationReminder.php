@@ -35,7 +35,7 @@ class ApplicationReminder extends Notification
         return (new WebPushMessage())
             ->title('Напоминание о записи')
             ->body('У вас запись завтра, ' . $date_format . ' в ' . $time)
-            ->action('Посмотреть', route('confirm', $this->application))
+            ->action('Подтвердить', route('confirm', $this->application))
             ->icon('/icon.png');
     }
 }
