@@ -21,8 +21,10 @@ class SendApplicationReminders extends Command
 
     public function handle()
     {
-        $tomorrow = Carbon::tomorrow();
-        $applications = Application::whereDate('date', $tomorrow->toDateString())->get();
+        $targetStart = Carbon::now()->addDay()->startOfHour();
+        $targetEnd = Carbon::now()->addDay()->endOfHour();
+
+        $applications = Application::whereBetween('date', [$targetStart, $targetEnd])->get();
 
         foreach ($applications as $application) {
             Notification::send($application->user_id, new ApplicationReminder($application));
