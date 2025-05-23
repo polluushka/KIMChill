@@ -1421,6 +1421,9 @@ table tr td span {
         display: none;
     }
 
+    .review .profile .profile-img {
+        margin-right: 5px !important;
+    }
 
 
     .about-studio .content p {
@@ -1660,9 +1663,6 @@ table tr td span {
         padding: 0 0.6rem;
     }
 
-    .review .profile .profile-img {
-        margin-right: 5px;
-    }
 
 }
 
