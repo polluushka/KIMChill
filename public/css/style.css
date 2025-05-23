@@ -1660,6 +1660,10 @@ table tr td span {
         padding: 0 0.6rem;
     }
 
+    .review .profile .profile-img {
+        margin-right: 5px;
+    }
+
 }
 
 @media screen and (max-width: 414px) and (orientation: portrait) {
