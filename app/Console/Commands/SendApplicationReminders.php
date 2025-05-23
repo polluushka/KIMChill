@@ -16,7 +16,7 @@ class SendApplicationReminders extends Command
      *
      * @var string
      */
-    protected $signature = 'appointments:remind';
+    protected $signature = 'applications:remind';
     protected $description = 'Отправка напоминаний за день до записи';
 
     public function handle()
@@ -27,7 +27,7 @@ class SendApplicationReminders extends Command
         $applications = Application::whereBetween('date', [$targetStart, $targetEnd])->get();
 
         foreach ($applications as $application) {
-            Notification::send($application->user_id, new ApplicationReminder($application));
+            Notification::send($application->user, new ApplicationReminder($application));
         }
 
         $this->info('Напоминания отправлены.');
