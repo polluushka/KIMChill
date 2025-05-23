@@ -306,7 +306,7 @@ p{
 
 .review .profile .profile-img  {
     width: 2.5rem;
-    margin-right: 15px;
+    margin-right: 0.5rem;
 }
 
 .review .profile .profile-img img, .review .profile .profile-img svg {
@@ -1419,10 +1419,6 @@ table tr td span {
 
     .svg-icon {
         display: none;
-    }
-
-    .review .profile .profile-img {
-        margin-right: 5px !important;
     }
 
 
